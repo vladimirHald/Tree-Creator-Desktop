@@ -9,7 +9,7 @@ var fs = require('fs');
          properties: ['openDirectory']
        }).then(result => {
          pathText.innerText = result.filePaths[0]
-         getCount(result.filePaths[0], true)
+         
          console.log(getDirAndFiles(result.filePaths[0],undefined,undefined,"dirs"))
          console.log(getDirAndFiles(result.filePaths[0],undefined,undefined,"files"))
          createTree()
@@ -34,27 +34,21 @@ var fs = require('fs');
             
             
         })
+        dirsCount = dirs.length
+       filesCount = files.length
        if(type == "dirs") {
+        setCountsValues();
           return dirs
+          
        }
        else if(type == "files") {
+          setCountsValues();
           return files
        }
+       
       }
-      
-      function getCount(directoryPath, setTurn) {
-        var arrayDirs = getDirAndFiles(directoryPath,undefined,undefined,"dirs") || [];
-        var arrayFiles = getDirAndFiles(directoryPath,undefined,undefined,"files") || [];
-        /*if(type == "dirs") {
-          return arrayDirs.length;
-        } else if(type == "files") {
-           return arrayFiles.length;
-         }*/
-         if(setTurn) {
-           setCountsValues(arrayDirs.length, arrayFiles.length);
-         }
-      }
-      function setCountsValues(dirsCount, filesCount) {
+
+      function setCountsValues() {
         var dirsLabel = document.getElementById("dirsCount");
         var filesLabel = document.getElementById("filesCount");
         dirsLabel.innerText = dirsCount;
