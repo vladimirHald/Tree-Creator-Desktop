@@ -8,7 +8,7 @@ var fs = require('fs');
       dialog.showOpenDialog({
          properties: ['openDirectory']
        }).then(result => {
-         pathText.innerText += result.filePaths[0]
+         pathText.innerText = result.filePaths[0]
          getCount(result.filePaths[0], true)
          console.log(getDirAndFiles(result.filePaths[0],undefined,undefined,"dirs"))
          console.log(getDirAndFiles(result.filePaths[0],undefined,undefined,"files"))
@@ -57,8 +57,8 @@ var fs = require('fs');
       function setCountsValues(dirsCount, filesCount) {
         var dirsLabel = document.getElementById("dirsCount");
         var filesLabel = document.getElementById("filesCount");
-        dirsLabel.innerText += dirsCount;
-        filesLabel.innerText += filesCount;
+        dirsLabel.innerText = dirsCount;
+        filesLabel.innerText = filesCount;
       }
       function createTree() {
           

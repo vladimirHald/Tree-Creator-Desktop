@@ -7,10 +7,8 @@
     text-align: center;
     
 }
-.openCatalog::placeholder {
-    color: darkgrey;
-}
-#dirsCount, #filesCount {
+
+#pathCSpan {
     display: block;
 }
 #pathContainer {
