@@ -1,0 +1,18 @@
+#getP {
+    color: lightseagreen;
+    font-size: 30px;
+}
+#getContainer {
+    margin-top: 25%;
+    text-align: center;
+    
+}
+.openCatalog::placeholder {
+    color: darkgrey;
+}
+#dirsCount, #filesCount {
+    display: block;
+}
+#pathContainer {
+    text-align: center;
+}

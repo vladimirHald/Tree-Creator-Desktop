@@ -1,0 +1,27 @@
+{
+  "name": "Tree-Creator-Desktop",
+  "version": "1.0.0",
+  "description": "Create Project Structure",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+    
+  },
+  
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^10.1.5"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.3"
+  }
+}

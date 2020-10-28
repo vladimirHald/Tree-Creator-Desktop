@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Tree Create</title>
+  </head>
+  <body>
+    <div id="getContainer">
+    <h2 id="getP">Get Project Structure</h2>
+   
+    <button type="button" class="btn btn-primary" onclick="openCatalog()">Open Catalog</button>
+    <br><br>
+  </div>
+  <div id="pathContainer">
+    <span id="pathText">Path - &nbsp;</span>
+    <span id="dirsCount">Directories: &nbsp; </span>
+    <span id="filesCount">Files: &nbsp;</span>
+    <br>
+    <button type="button" class="btn btn-primary" onclick="createTree()" disabled>Create Tree</button>
+  </div>
+    
+    
+  
+    <!-- You can also require other files to run in this process -->
+    <script src="./openDirectory.js"></script>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
