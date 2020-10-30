@@ -27,3 +27,5 @@ Run in project's dir
 npm install electron-packager -g
 electron-packager . Tree-Creator-Desktop --platform=win32 --arch=x64
 ```
+
+Go to `./Tree-Creator-Desktop-win32-x64` and run `Tree-Creator-Desktop.exe`.
