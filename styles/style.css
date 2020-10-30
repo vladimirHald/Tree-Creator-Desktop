@@ -20,9 +20,13 @@
 #TreeContainer {
     margin-top: 2%;
     display: none;
-    text-align: center;
+  
 }
 
 #TreeArea {
-    white-space: nowrap;
+    user-select: all;
+    text-align: none;
+}
+#TreeAreaOpForm {
+    text-align: center;
 }

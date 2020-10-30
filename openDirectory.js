@@ -54,11 +54,14 @@ var fs = require('fs');
         filesLabel.innerText = filesCount;
         document.getElementById("createTreeBtn").removeAttribute("disabled");
       }
-      function createTree() {
+      function setNewSceneForTree() {
           document.getElementById("getContainer").style.display = "none";
           document.getElementById("pathContainer").style.display = "none";
           document.getElementById("TreeContainer").style.display = "block";
-          document.getElementById("TreeArea").innerText = "Success";
+          document.getElementById("TreeArea").innerText = "├───";
+      }
+      function createTree() {
+          setNewSceneForTree();
       }
       function returnToMenu() {
         window.location = "index.html"
