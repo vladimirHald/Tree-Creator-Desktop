@@ -2,6 +2,7 @@
     color: lightseagreen;
     font-size: 30px;
 }
+
 #getContainer {
     margin-top: 25%;
     text-align: center;
@@ -11,6 +12,17 @@
 #pathCSpan {
     display: block;
 }
+
 #pathContainer {
     text-align: center;
+}
+
+#TreeContainer {
+    margin-top: 2%;
+    display: none;
+    text-align: center;
+}
+
+#TreeArea {
+    white-space: nowrap;
 }

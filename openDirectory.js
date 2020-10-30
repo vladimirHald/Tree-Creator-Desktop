@@ -11,8 +11,7 @@ var fs = require('fs');
          pathText.innerText = result.filePaths[0]
          
          console.log(getDirAndFiles(result.filePaths[0],undefined,undefined,"dirs"))
-         console.log(getDirAndFiles(result.filePaths[0],undefined,undefined,"files"))
-         createTree()
+         //console.log(getDirAndFiles(result.filePaths[0],undefined,undefined,"files"))
        }).catch(err => {
          console.log(err)
        })
@@ -53,7 +52,14 @@ var fs = require('fs');
         var filesLabel = document.getElementById("filesCount");
         dirsLabel.innerText = dirsCount;
         filesLabel.innerText = filesCount;
+        document.getElementById("createTreeBtn").removeAttribute("disabled");
       }
       function createTree() {
-          
+          document.getElementById("getContainer").style.display = "none";
+          document.getElementById("pathContainer").style.display = "none";
+          document.getElementById("TreeContainer").style.display = "block";
+          document.getElementById("TreeArea").innerText = "Success";
+      }
+      function returnToMenu() {
+        window.location = "index.html"
       }

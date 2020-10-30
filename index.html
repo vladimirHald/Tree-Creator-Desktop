@@ -18,7 +18,7 @@
   </div>
   <div id="pathContainer">
     <div id="pathCSpan">
-      <span>Path - &nbsp;</span</span> <span id="pathText">
+      <span>Path - &nbsp;</span> <span id="pathText">
     </div>
     <div id="pathCSpan">
       <span>Directories: &nbsp; </span><span id="dirsCount"></span>
@@ -29,9 +29,15 @@
     
     
     <br>
-    <button type="button" class="btn btn-primary" onclick="createTree()" disabled>Create Tree</button>
+    <button type="button" class="btn btn-primary" id="createTreeBtn" onclick="createTree()" disabled>Create Tree</button>
   </div>
-    
+    <div id="TreeContainer">
+      <textarea id="TreeArea" cols="108" rows="18" class="form-control" readonly></textarea>
+      <br>
+      <div id="TreeAreaOpForm">
+        <button type="button" class="btn btn-primary"  onclick="returnToMenu()" >Return to menu</button>
+      </div>
+    </div>
     
   
     <!-- You can also require other files to run in this process -->
