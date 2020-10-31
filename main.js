@@ -16,11 +16,16 @@ function createWindow () {
     }
   })
 
-  // Hide DevTools and menu bar in production mode
-  if (Utils.isPackaged()) {
+  if (Utils.appIsPackaged()) {
+    // Add any production-mode actions here.
+
+    // Hide menu bar.
     mainWindow.setMenuBarVisibility(false)
   } else {
-    mainWindow.webContents.openDevTools()
+    // Add any development-mode actions here.
+
+    // Open console.
+    // mainWindow.webContents.openDevTools()
   }
 
   // and load the index.html of the app.

@@ -2,6 +2,7 @@ const { dialog } = require('electron').remote
 
 var path = require('path');
 var fs = require('fs');
+const Utils = require('./utils');
 
    function openCatalog() {
       var pathText = document.getElementById("pathText");
@@ -9,9 +10,12 @@ var fs = require('fs');
          properties: ['openDirectory']
        }).then(result => {
          pathText.innerText = result.filePaths[0]
-         
+
          console.log(getDirAndFiles(result.filePaths[0],undefined,undefined,"dirs"))
          //console.log(getDirAndFiles(result.filePaths[0],undefined,undefined,"files"))
+
+        let dirContentAsString = Utils.getDirContentAsString(result.filePaths[0]);
+        createTree(dirContentAsString);
        }).catch(err => {
          console.log(err)
        })
@@ -54,14 +58,14 @@ var fs = require('fs');
         filesLabel.innerText = filesCount;
         document.getElementById("createTreeBtn").removeAttribute("disabled");
       }
-      function setNewSceneForTree() {
+      function setNewSceneForTree(treeContent) {
           document.getElementById("getContainer").style.display = "none";
           document.getElementById("pathContainer").style.display = "none";
           document.getElementById("TreeContainer").style.display = "block";
-          document.getElementById("TreeArea").innerText = "├───";
+          document.getElementById("TreeArea").innerText = treeContent;
       }
-      function createTree() {
-          setNewSceneForTree();
+      function createTree(treeContent) {
+          setNewSceneForTree(treeContent);
       }
       function returnToMenu() {
         window.location = "index.html"

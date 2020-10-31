@@ -26,6 +26,7 @@
 #TreeArea {
     user-select: all;
     text-align: none;
+    min-height: 400px;
 }
 #TreeAreaOpForm {
     text-align: center;
