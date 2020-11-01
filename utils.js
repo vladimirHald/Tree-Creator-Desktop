@@ -40,7 +40,7 @@ class Utils {
         };
       })
       .sort((a, b) => b.isDir - a.isDir || a.name > b.name ? 1 : -1)
-      .forEach(dirItem => {
+      .forEach(function(dirItem, index)  {
         let dirItemPath = dirItem.path;
 
         let spaces = ' '.repeat(_privateOptions.level * 4);
@@ -49,11 +49,28 @@ class Utils {
         if (dirItem.isDir) {
           ++_privateOptions.level;
           Utils.getDirContentAsString(dirItemPath, options, _privateOptions);
+           --_privateOptions.level;
         }
     });
 
     return _privateOptions.dirTree;
   }
+static  getLastIndex(paths) {
+  var filesCountLastIndex = fs.readdirSync(paths).length
+  
+      return filesCountLastIndex
+}
+static getDirsCount(paths) {
+  var dirsCount;
+  fs.readdirSync(paths).forEach(item => {
+    if(fs.statSync(paths + path.sep +item).isDirectory()) {
+      ++dirsCount
+    }
+  })
+  return dirsCount
+}
+
+   
 }
 
 module.exports = Utils;
