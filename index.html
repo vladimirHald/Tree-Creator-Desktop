@@ -17,13 +17,13 @@
     <br><br>
   </div>
   <div id="pathContainer">
-    <div id="pathCSpan">
-      <span>Path - &nbsp;</span> <span id="pathText">
+    <div class="pathCSpan">
+      <span>Path - &nbsp;</span> <span id="pathText"></span>
     </div>
-    <div id="pathCSpan">
+    <div class="pathCSpan">
       <span>Directories: &nbsp; </span><span id="dirsCount"></span>
     </div>
-    <div id="pathCSpan">
+    <div class="pathCSpan">
       <span>Files: &nbsp;</span> <span id="filesCount"></span>
     </div>
     
@@ -32,14 +32,13 @@
     <button type="button" class="btn btn-primary" id="createTreeBtn" onclick="createTree()" disabled>Create Tree</button>
   </div>
     <div id="TreeContainer">
-      <pre id="TreeArea" cols="108" rows="18" class="form-control" readonly></pre>
+      <pre id="TreeArea" class="form-control" readonly></pre>
       <br>
       <div id="TreeAreaOpForm">
         <button type="button" class="btn btn-primary"  onclick="returnToMenu()" >Return to menu</button>
       </div>
     </div>
-    
-  
+
     <!-- You can also require other files to run in this process -->
     <script src="./openDirectory.js"></script>
     <script src="./renderer.js"></script>
