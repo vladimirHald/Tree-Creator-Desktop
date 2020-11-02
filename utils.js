@@ -59,10 +59,11 @@ class Utils {
 
         if (dirItem.isDir) {
           ++_privateOptions.level;
-          if(isLastItem)
-          _privateOptions.isSep = false
-          else
-          _privateOptions.isSep = true
+          if(isLastItem) {
+            _privateOptions.isSep = false
+          } else {
+            _privateOptions.isSep = true
+          }
           Utils.getDirContentAsString(dirItemPath, options, _privateOptions);
           --_privateOptions.level;
         }
