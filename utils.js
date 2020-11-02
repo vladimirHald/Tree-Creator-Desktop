@@ -24,7 +24,7 @@ class Utils {
    * @param _privateOptions
    * @returns string
    */
-  static getDirContentAsString(dirPath, options = {}, _privateOptions = { level: 0, dirTree: '' }) {
+  static getDirContentAsString(dirPath, options = {}, _privateOptions = { level: 0, dirTree: '', isSep: true }) {
     if (_privateOptions.level === 0) {
       _privateOptions.dirTree += '.'
     }
@@ -39,15 +39,30 @@ class Utils {
           isDir: fs.lstatSync(dirItemPath).isDirectory()
         };
       })
-      .sort((a, b) => b.isDir - a.isDir || a.name > b.name ? 1 : -1)
+      .sort((a, b) => a.isDir ? -1 : 1)
+      .sort((a, b) => a.isDir ? -1 : 1)
       .forEach(function(dirItem, index)  {
         let dirItemPath = dirItem.path;
-
-        let spaces = ' '.repeat(_privateOptions.level * 4);
-        _privateOptions.dirTree += `\n${spaces} ├── ${dirItem.name}`
-
+        //let spaces = ' '.repeat(_privateOptions.level * 4);
+        let spaces
+        if(_privateOptions.isSep)
+         spaces = ' |  '.repeat(_privateOptions.level);
+        else 
+         spaces = '    '.repeat(_privateOptions.level);
+        
+        if(index == Utils.getLastIndex(dirPath)){         
+          
+          _privateOptions.dirTree += `\n${spaces} └── ${dirItem.name}`
+        }
+        else { 
+          _privateOptions.dirTree += `\n${spaces} ├── ${dirItem.name}`
+        }
         if (dirItem.isDir) {
           ++_privateOptions.level;
+          if(index == Utils.getLastIndex(dirPath))
+          _privateOptions.isSep = false
+          else
+          _privateOptions.isSep = true
           Utils.getDirContentAsString(dirItemPath, options, _privateOptions);
            --_privateOptions.level;
         }
@@ -58,7 +73,7 @@ class Utils {
 static  getLastIndex(paths) {
   var filesCountLastIndex = fs.readdirSync(paths).length
   
-      return filesCountLastIndex
+      return filesCountLastIndex-1
 }
 static getDirsCount(paths) {
   var dirsCount;
