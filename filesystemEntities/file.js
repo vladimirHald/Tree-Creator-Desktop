@@ -3,9 +3,10 @@ const FsItem = require('./fsItem.js')
 class File extends FsItem {
   /**
    * @param {string} path Full path to file.
+   * @param level
    */
-  constructor(path) {
-    super(path);
+  constructor(path, level = 0) {
+    super(path, level);
   }
 }
 

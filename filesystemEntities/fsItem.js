@@ -1,15 +1,18 @@
 const path = require('path')
 
 class FsItem {
-  constructor(path) {
+  constructor(path, level) {
     /** @type {string} */
     this.path = path;
 
     /** @type {string} */
     this.name = this._getName();
 
-    /** @type {null|FsItem} */
+    /** @type {null|Directory} */
     this.parent = null;
+
+    /** @type {int} */
+    this.level = level;
   }
 
   /**

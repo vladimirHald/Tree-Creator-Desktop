@@ -7,9 +7,10 @@ const _ = require('lodash');
 class Directory extends FsItem {
   /**
    * @param {string} path Full path to directory.
+   * @param level
    */
-  constructor(path) {
-    super(path);
+  constructor(path, level = 0) {
+    super(path, level);
 
     /**
      * @type {FsItem[]} Contains all files and dirs in directory.
@@ -43,9 +44,9 @@ class Directory extends FsItem {
           fsItem;
 
         if (stat.isDirectory()) {
-          fsItem = new Directory(dirItemPath);
+          fsItem = new Directory(dirItemPath, this.level+1);
         } else if(stat.isFile()) {
-          fsItem = new File(dirItemPath);
+          fsItem = new File(dirItemPath, this.level+1);
         } else {
           // Symlinks, FIFO, sockets and other Filesystem items
           // will be skipped.
@@ -62,7 +63,7 @@ class Directory extends FsItem {
         // All items sorted by alphabet.
         return a.name.localeCompare(b.name);
       })
-      .forEach((fsItem) => {
+      .forEach(fsItem => {
         if (fsItem.isDirectory()) {
           fsItem._resolveChildren();
         }
