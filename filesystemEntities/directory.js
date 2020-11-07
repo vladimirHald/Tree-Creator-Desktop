@@ -30,6 +30,48 @@ class Directory extends FsItem {
   }
 
   /**
+   * @param {FsItem} fsItem
+   * @return {boolean}
+   */
+  isLastChild(fsItem) {
+    let lastChild = _.last(this.children);
+    return lastChild && lastChild.path === fsItem.path;
+  }
+
+  /**
+   * @param {object} options
+   * @param {object} _privateOptions
+   * @return {string}
+   */
+  getDirContentAsString(options = {}, _privateOptions = { dirTree: '' }) {
+    this.children.forEach(fsItem => {
+      let startSymbol = fsItem.parent.isLastChild(fsItem) ? '└' : '├';
+      let spaces = '|  '.repeat(this.level);
+      _privateOptions.dirTree += `\n${spaces}${startSymbol}── ${fsItem.name}`;
+
+      // не рисовать, если у родителя элемента нету соседа справа
+      // (это последний элемент на своем уровне)
+
+      // fsItem - css
+      // fsItem.parent - public
+      // fsItem.parent.parent - tutorial
+      // fsItem.parent.parent.isLastChild(fsItem.parent)
+      if (
+        fsItem.hasParent() && fsItem.parent.hasParent() &&
+        fsItem.parent.parent.isLastChild(fsItem.parent)
+      ) {
+        _privateOptions.dirTree += ` [not]`;
+      }
+
+      if (fsItem.isDirectory()) {
+        fsItem.getDirContentAsString(options, _privateOptions);
+      }
+    });
+
+    return _privateOptions.dirTree;
+  }
+
+  /**
    * @private
    *
    * Resolve and assign children of directory.

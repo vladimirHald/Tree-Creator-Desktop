@@ -29,6 +29,10 @@ class FsItem {
     return Object.getPrototypeOf(this).constructor.name === 'File';
   }
 
+  hasParent() {
+    return this.parent !== null;
+  }
+
   /**
    * @private
    * @return string
