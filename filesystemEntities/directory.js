@@ -2,6 +2,7 @@ const FsItem = require('./fsItem.js')
 const fs = require('fs')
 const path = require('path')
 const File = require('./file.js');
+const _ = require('lodash');
 
 class Directory extends FsItem {
   /**
@@ -17,6 +18,14 @@ class Directory extends FsItem {
 
     // Resolve and assign files and dirs of directory.
     this._resolveChildren();
+  }
+
+  /**
+   * @param {FsItem} fsItem
+   * @return {boolean}
+   */
+  isChildExists(fsItem) {
+    return !!_.find(this.children, { path: fsItem.path });
   }
 
   /**
@@ -59,7 +68,9 @@ class Directory extends FsItem {
         }
 
         fsItem.parent = this;
-        this.children.push(fsItem);
+        if (!this.isChildExists(fsItem)) {
+          this.children.push(fsItem);
+        }
       })
   }
 }

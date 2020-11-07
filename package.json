@@ -5,9 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron ."
-    
   },
-  
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
     "Electron",
@@ -22,6 +20,7 @@
     "electron": "^10.1.5"
   },
   "dependencies": {
-    "bootstrap": "^4.5.3"
+    "bootstrap": "^4.5.3",
+    "lodash": "^4.17.20"
   }
 }
