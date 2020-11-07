@@ -25,7 +25,7 @@ function createWindow () {
     // Add any development-mode actions here.
 
     // Open console.
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
   }
 
   // and load the index.html of the app.

@@ -1,6 +1,7 @@
 const electron = require('electron')
 const fs = require('fs')
 const path = require('path')
+const Directory = require('./filesystemEntities/directory');
 
 class Utils {
   /**
@@ -25,6 +26,11 @@ class Utils {
    * @returns string
    */
   static getDirContentAsString(dirPath, options = {}, _privateOptions = { level: 0, dirTree: '', isSep: true }) {
+    let dir = new Directory(dirPath);
+    console.log(dir);
+
+    return 'Temporary disabled.';
+
     if (_privateOptions.level === 0) {
       _privateOptions.dirTree += '.'
     }
