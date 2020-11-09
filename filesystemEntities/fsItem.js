@@ -40,7 +40,7 @@ class FsItem {
    */
   _getName() {
     // Get name from the last segment of path.
-    return this.path.substring(this.path.lastIndexOf(path.sep) + 1);
+    return path.parse(this.path).base;
   }
 
   /**
