@@ -123,14 +123,14 @@ class Directory extends FsItem {
         return a.name.localeCompare(b.name);
       })
       .forEach(fsItem => {
+        if (this.isChildExists(fsItem)) return;
+
         if (fsItem.isDirectory()) {
           fsItem._resolveChildren();
         }
 
         fsItem.parent = this;
-        if (!this.isChildExists(fsItem)) {
-          this.children.push(fsItem);
-        }
+        this.children.push(fsItem);
       })
   }
 }

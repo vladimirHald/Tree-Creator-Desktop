@@ -21,11 +21,9 @@ class Utils {
    * TODO <NewEXE> WIP
    *
    * @param dirPath
-   * @param options
-   * @param _privateOptions
    * @returns string
    */
-  static getDirContentAsString(dirPath, options = {}, _privateOptions = { level: 0, dirTree: '', isSep: true }) {
+  static getDirContentAsString(dirPath) {
     let dir = new Directory(dirPath);
 
     console.log(dir);
