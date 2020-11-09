@@ -35,7 +35,7 @@ class Directory extends FsItem {
    */
   isLastChild(fsItem) {
     let lastChild = _.last(this.children);
-    return lastChild && lastChild.path === fsItem.path;
+    return fsItem.is(lastChild);
   }
 
   /**
@@ -46,22 +46,16 @@ class Directory extends FsItem {
   getDirContentAsString(options = {}, _privateOptions = { dirTree: '' }) {
     this.children.forEach(fsItem => {
       let startSymbol = fsItem.parent.isLastChild(fsItem) ? '└' : '├';
-      let spaces = '|  '.repeat(this.level);
-      _privateOptions.dirTree += `\n${spaces}${startSymbol}── ${fsItem.name}`;
 
-      // не рисовать, если у родителя элемента нету соседа справа
-      // (это последний элемент на своем уровне)
+      let levelsWithoutSeparator = this._getLevelsWithoutSeparator(fsItem);
 
-      // fsItem - css
-      // fsItem.parent - public
-      // fsItem.parent.parent - tutorial
-      // fsItem.parent.parent.isLastChild(fsItem.parent)
-      if (
-        fsItem.hasParent() && fsItem.parent.hasParent() &&
-        fsItem.parent.parent.isLastChild(fsItem.parent)
-      ) {
-        _privateOptions.dirTree += ` [not]`;
+      let spaces = '';
+      for (let i = 0; i < this.level; i++) {
+        let separator = levelsWithoutSeparator.includes(i) ? ' ' : '|';
+        spaces += `${separator}   `;
       }
+
+      _privateOptions.dirTree += `\n${spaces}${startSymbol}── ${fsItem.name}`;
 
       if (fsItem.isDirectory()) {
         fsItem.getDirContentAsString(options, _privateOptions);
@@ -69,6 +63,29 @@ class Directory extends FsItem {
     });
 
     return _privateOptions.dirTree;
+  }
+
+  /**
+   * @private
+   * Resolves levels without separator (|) for fsItem.
+   *
+   * @param {FsItem} fsItem
+   * @return {int[]}
+   */
+  _getLevelsWithoutSeparator(fsItem) {
+    let
+      fsItemCopy = _.cloneDeep(fsItem), // don't broke origin object
+      levelsWithoutSeparator = [];
+
+    while (fsItemCopy.hasParent()) {
+      if (fsItemCopy.parent.hasParent() && fsItemCopy.parent.parent.isLastChild(fsItemCopy.parent)) {
+        levelsWithoutSeparator.push(fsItemCopy.parent.parent.level);
+      }
+
+      fsItemCopy = fsItemCopy.parent;
+    }
+
+    return levelsWithoutSeparator;
   }
 
   /**

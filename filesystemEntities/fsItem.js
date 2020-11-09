@@ -1,4 +1,5 @@
-const path = require('path')
+const path = require('path');
+const _ = require('lodash');
 
 class FsItem {
   constructor(path, level) {
@@ -40,6 +41,16 @@ class FsItem {
   _getName() {
     // Get name from the last segment of path.
     return this.path.substring(this.path.lastIndexOf(path.sep) + 1);
+  }
+
+  /**
+   * Recognize if fsItem is same (by path equality).
+   *
+   * @param {FsItem|*} fsItem
+   * @return {boolean}
+   */
+  is(fsItem) {
+    return fsItem && _.isObject(fsItem) && this.path === fsItem.path;
   }
 }
 
