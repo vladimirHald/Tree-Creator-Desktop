@@ -52,6 +52,24 @@ class FsItem {
   is(fsItem) {
     return fsItem && _.isObject(fsItem) && this.path === fsItem.path;
   }
+
+  /**
+   * @return {FsItem} Copy of FsItem without any parent relation.
+   */
+  withoutParentRelations() {
+    let thisCopy = _.cloneDeep(this);
+
+    delete thisCopy.parent;
+
+    thisCopy.children.forEach(child => {
+      delete child.parent;
+      if (child.isDirectory()) {
+        child.withoutParentRelations();
+      }
+    });
+
+    return thisCopy;
+  }
 }
 
 module.exports = FsItem;

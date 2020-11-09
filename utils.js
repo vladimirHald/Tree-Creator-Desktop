@@ -26,7 +26,12 @@ class Utils {
   static getDirContentAsString(dirPath) {
     let dir = new Directory(dirPath);
 
-    console.log(dir);
+    console.log(
+      dir.withoutParentRelations(),
+
+      // TODO NewEXE produces TypeError: Converting circular structure to JSON
+      //JSON.stringify(dir.withoutParentRelations())
+    );
 
     return dir.getDirContentAsString();
   }
