@@ -54,7 +54,9 @@ class FsItem {
   }
 
   /**
-   * @return {FsItem} Copy of FsItem without any parent relation.
+   * Returns copy of FsItem without any parent relation.
+   *
+   * @return {FsItem}
    */
   withoutParentRelations() {
     let thisCopy = _.cloneDeep(this);
@@ -64,11 +66,25 @@ class FsItem {
     thisCopy.children.forEach(child => {
       delete child.parent;
       if (child.isDirectory()) {
-        child.withoutParentRelations();
+        child.deleteParentRelations();
       }
     });
 
     return thisCopy;
+  }
+
+  /**
+   * Remove all parent relations.
+   */
+  deleteParentRelations() {
+    delete this.parent;
+
+    this.children.forEach(child => {
+      delete child.parent;
+      if (child.isDirectory()) {
+        child.deleteParentRelations();
+      }
+    });
   }
 }
 
