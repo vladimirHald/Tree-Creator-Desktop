@@ -2,6 +2,7 @@ const electron = require('electron')
 const fs = require('fs')
 const path = require('path')
 const Directory = require('./filesystemEntities/directory');
+const jsonTree = require('./filesystemEntities/jsonTree');
 
 class Utils {
   /**
@@ -23,14 +24,20 @@ class Utils {
    * @param dirPath
    * @returns string
    */
-  static getDirContentAsString(dirPath) {
+  static getDirContentAsString(dirPath, type) {
     let dir = new Directory(dirPath);
-
-    console.log(
-      JSON.stringify(dir.withoutParentRelations())
-    );
-
+    if(type == 'tree')
     return dir.getDirContentAsString();
+    else if(type == 'json') {
+      
+      console.log(
+        JSON.stringify(new jsonTree().withoutParentRelations(dir))
+      );
+      return "See console"
+    }
+    
+
+    
   }
 
   static getLastIndex(paths) {

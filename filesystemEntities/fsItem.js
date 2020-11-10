@@ -58,20 +58,7 @@ class FsItem {
    *
    * @return {FsItem}
    */
-  withoutParentRelations() {
-    let thisCopy = _.cloneDeep(this);
-
-    delete thisCopy.parent;
-
-    thisCopy.children.forEach(child => {
-      delete child.parent;
-      if (child.isDirectory()) {
-        child.deleteParentRelations();
-      }
-    });
-
-    return thisCopy;
-  }
+  
 
   /**
    * Remove all parent relations.

@@ -27,12 +27,19 @@
       <span>Files: &nbsp;</span> <span id="filesCount"></span>
     </div>
     
-    
+    <br>
+      <div class="methodSelect">
+        <select class="form-control" id="selectMethod">
+          <option>Directory Tree</option>
+          <option>Directory JSON</option>
+        </select>
+      </div>
     <br>
     <button type="button" class="btn btn-primary" id="createTreeBtn" onclick="createTree()" disabled>Create Tree</button>
   </div>
     <div id="TreeContainer">
       <pre id="TreeArea" class="form-control" readonly></pre>
+      
       <br>
       <div id="TreeAreaOpForm">
         <button type="button" class="btn btn-primary"  onclick="returnToMenu()" >Return to menu</button>

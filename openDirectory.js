@@ -13,8 +13,12 @@ function openCatalog() {
 
     //console.log(getDirAndFiles(result.filePaths[0],undefined,undefined,"dirs"))
     //console.log(getDirAndFiles(result.filePaths[0],undefined,undefined,"files"))
-
-    let dirContentAsString = Utils.getDirContentAsString(result.filePaths[0]);
+    let selectedOption = '' + document.getElementById("selectMethod").selectedIndex;
+    if(selectedOption == 0)
+    selectedOption = 'tree'
+    else if(selectedOption == 1)
+    selectedOption = 'json'
+    let dirContentAsString = Utils.getDirContentAsString(result.filePaths[0], selectedOption);
     createTree(dirContentAsString);
   }).catch(err => {
     console.log(err)
