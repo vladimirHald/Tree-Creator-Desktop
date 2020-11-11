@@ -41,32 +41,6 @@ class Utils {
     
   }
 
-  static getLastIndex(paths) {
-    var filesCountLastIndex = fs.readdirSync(paths).length
-
-    return filesCountLastIndex - 1
-  }
-
-  static getDirsCount(paths) {
-    var dirsCount = 0;
-    fs.readdirSync(paths).forEach(item => {
-      if (fs.statSync(paths + path.sep + item).isDirectory()) {
-        ++dirsCount
-      }
-    })
-    return dirsCount
-  }
-
-  static hasFiles(dirPath) {
-    let hasFiles = false;
-    fs.readdirSync(dirPath).forEach(item => {
-      if (hasFiles) return;
-      if (fs.statSync(dirPath + path.sep + item).isFile()) {
-        hasFiles = true;
-      }
-    })
-    return hasFiles;
-  }
 }
 
 module.exports = Utils;

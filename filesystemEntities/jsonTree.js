@@ -1,4 +1,5 @@
-const _ = require('lodash')
+const _ = require('lodash');
+
 class jsonTree {
     withoutParentRelations(dir) {
         let thisCopy = _.cloneDeep(dir);
@@ -16,7 +17,7 @@ class jsonTree {
       }
 
       
-    getJSONTree() {
+    execute() {
         return JSON.stringify(this.withoutParentRelations());
     }
 }

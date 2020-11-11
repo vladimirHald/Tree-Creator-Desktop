@@ -1,4 +1,4 @@
-const _ = require('lodash')
+const _ = require('lodash');
 class structTree {
     getDirContentAsString(options = {}, _privateOptions = { dirTree: '' }, dir) {
         dir.children.forEach(fsItem => {
@@ -43,6 +43,10 @@ class structTree {
     }
 
     return levelsWithoutSeparator;
+  }
+
+  execute(dir) {
+    this.getDirContentAsString(undefined,undefined, dir)
   }
 }
 module.exports = structTree;
