@@ -3,6 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const Directory = require('./filesystemEntities/directory');
 const jsonTree = require('./filesystemEntities/jsonTree');
+const structTree = require('./filesystemEntities/structTree')
 
 class Utils {
   /**
@@ -27,7 +28,7 @@ class Utils {
   static getDirContentAsString(dirPath, type) {
     let dir = new Directory(dirPath);
     if(type == 'tree')
-    return dir.getDirContentAsString();
+    return new structTree().getDirContentAsString(undefined,undefined, dir);
     else if(type == 'json') {
       
       console.log(

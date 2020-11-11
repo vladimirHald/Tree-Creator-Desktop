@@ -4,6 +4,7 @@ const path = require('path')
 const File = require('./file.js');
 const _ = require('lodash');
 
+
 class Directory extends FsItem {
   /**
    * @param {string} path Full path to directory.
@@ -43,50 +44,9 @@ class Directory extends FsItem {
    * @param {object} _privateOptions
    * @return {string}
    */
-  getDirContentAsString(options = {}, _privateOptions = { dirTree: '' }) {
-    this.children.forEach(fsItem => {
-      let startSymbol = fsItem.parent.isLastChild(fsItem) ? '└' : '├';
+  
 
-      let levelsWithoutSeparator = this._getLevelsWithoutSeparator(fsItem);
-
-      let spaces = '';
-      for (let i = 0; i < this.level; i++) {
-        let separator = levelsWithoutSeparator.includes(i) ? ' ' : '|';
-        spaces += `${separator}   `;
-      }
-
-      _privateOptions.dirTree += `\n${spaces}${startSymbol}── ${fsItem.name}`;
-
-      if (fsItem.isDirectory()) {
-        fsItem.getDirContentAsString(options, _privateOptions);
-      }
-    });
-
-    return _privateOptions.dirTree;
-  }
-
-  /**
-   * @private
-   * Resolves levels without separator (|) for fsItem.
-   *
-   * @param {FsItem} fsItem
-   * @return {int[]}
-   */
-  _getLevelsWithoutSeparator(fsItem) {
-    let
-      fsItemCopy = _.cloneDeep(fsItem), // don't broke origin object
-      levelsWithoutSeparator = [];
-
-    while (fsItemCopy.hasParent()) {
-      if (fsItemCopy.parent.hasParent() && fsItemCopy.parent.parent.isLastChild(fsItemCopy.parent)) {
-        levelsWithoutSeparator.push(fsItemCopy.parent.parent.level);
-      }
-
-      fsItemCopy = fsItemCopy.parent;
-    }
-
-    return levelsWithoutSeparator;
-  }
+  
 
   /**
    * @private
