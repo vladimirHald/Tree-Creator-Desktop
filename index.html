@@ -29,7 +29,7 @@
     
     <br>
       <div class="methodSelect">
-        <select class="form-control" id="selectMethod">
+        <select class="form-control" id="selectMethod" name="selectMethod">
           <option>Directory Tree</option>
           <option>Directory JSON</option>
         </select>
@@ -47,7 +47,8 @@
     </div>
 
     <!-- You can also require other files to run in this process -->
-    <script src="./openDirectory.js"></script>
-    <script src="./renderer.js"></script>
+    <script>var exports = {}</script>
+    <script src="./dist/openDirectory.js"></script>
+    <script src="./dist/renderer.js"></script>
   </body>
 </html>

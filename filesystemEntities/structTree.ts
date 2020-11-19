@@ -1,7 +1,9 @@
-const _ = require('lodash');
-class structTree {
-    getDirContentAsString(options = {}, _privateOptions = { dirTree: '' }, dir) {
-        dir.children.forEach(fsItem => {
+const TreeInterface = require("./treeInterface")
+
+const ___ = require('lodash');
+class structTree implements treeInterface {
+    getDirContentAsString(options = {}, _privateOptions = { dirTree: '' }, dir: any) {
+        dir.children.forEach((fsItem: any) => {
           let startSymbol = fsItem.parent.isLastChild(fsItem) ? '└' : '├';
     
           let levelsWithoutSeparator = this._getLevelsWithoutSeparator(fsItem);
@@ -29,9 +31,9 @@ class structTree {
    * @param {FsItem} fsItem
    * @return {int[]}
    */
-  _getLevelsWithoutSeparator(fsItem) {
+  _getLevelsWithoutSeparator(fsItem: any) {
     let
-      fsItemCopy = _.cloneDeep(fsItem), // don't broke origin object
+      fsItemCopy = ___.cloneDeep(fsItem), // don't broke origin object
       levelsWithoutSeparator = [];
 
     while (fsItemCopy.hasParent()) {
@@ -45,8 +47,8 @@ class structTree {
     return levelsWithoutSeparator;
   }
 
-  execute(dir) {
-    this.getDirContentAsString(undefined,undefined, dir)
+  execute(dir: any) {
+    return this.getDirContentAsString(undefined,undefined, dir)
   }
 }
 module.exports = structTree;

@@ -1,8 +1,13 @@
 const path = require('path');
-const _ = require('lodash');
+const __ = require('lodash');
 
 class FsItem {
-  constructor(path, level) {
+  path: any;
+  name: any;
+  parent: any;
+  level: any;
+  children: any;
+  constructor(path: any, level: any) {
     /** @type {string} */
     this.path = path;
 
@@ -49,8 +54,8 @@ class FsItem {
    * @param {FsItem|*} fsItem
    * @return {boolean}
    */
-  is(fsItem) {
-    return fsItem && _.isObject(fsItem) && this.path === fsItem.path;
+  is(fsItem: any) {
+    return fsItem && __.isObject(fsItem) && this.path === fsItem.path;
   }
 
   /**
@@ -66,12 +71,12 @@ class FsItem {
   deleteParentRelations() {
     delete this.parent;
 
-    this.children.forEach(child => {
-      delete child.parent;
-      if (child.isDirectory()) {
-        child.deleteParentRelations();
-      }
-    });
+    this.children.forEach((child: any) => {
+        delete child.parent;
+        if (child.isDirectory()) {
+          child.deleteParentRelations();
+        }
+      });
   }
 }
 

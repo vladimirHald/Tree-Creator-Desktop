@@ -1,16 +1,16 @@
 const FsItem = require('./fsItem.js')
 const fs = require('fs')
 const path = require('path')
-const File = require('./file.js');
+let File = require('./fileA.js');
 const _ = require('lodash');
 
 
-class Directory extends FsItem {
+export class Directory extends FsItem {
   /**
    * @param {string} path Full path to directory.
    * @param level
    */
-  constructor(path, level = 0) {
+  constructor(path: any, level = 0) {
     super(path, level);
 
     /**
@@ -26,7 +26,7 @@ class Directory extends FsItem {
    * @param {FsItem} fsItem
    * @return {boolean}
    */
-  isChildExists(fsItem) {
+  isChildExists(fsItem: any) {
     return !!_.find(this.children, { path: fsItem.path });
   }
 
@@ -34,7 +34,7 @@ class Directory extends FsItem {
    * @param {FsItem} fsItem
    * @return {boolean}
    */
-  isLastChild(fsItem) {
+  isLastChild(fsItem: any) {
     let lastChild = _.last(this.children);
     return fsItem.is(lastChild);
   }
@@ -56,7 +56,7 @@ class Directory extends FsItem {
    */
   _resolveChildren() {
     fs.readdirSync(this.path)
-      .map(dirItemName => {
+      .map((dirItemName: any) => {
         let
           dirItemPath = this.path + path.sep + dirItemName,
           stat = fs.lstatSync(dirItemPath),
@@ -74,15 +74,15 @@ class Directory extends FsItem {
 
         return fsItem;
       })
-      .filter(fsItem => fsItem !== null) // Skip of unsupported Filesystem items
-      .sort((a, b) => {
+      .filter((fsItem: any) => fsItem !== null) // Skip of unsupported Filesystem items
+      .sort((a: any, b: any) => {
         // Directories first.
         if (a.isDirectory() && !b.isDirectory()) return -1;
         if (!a.isDirectory() && b.isDirectory()) return 1;
         // All items sorted by alphabet.
         return a.name.localeCompare(b.name);
       })
-      .forEach(fsItem => {
+      .forEach((fsItem: any) => {
         if (this.isChildExists(fsItem)) return;
 
         if (fsItem.isDirectory()) {
