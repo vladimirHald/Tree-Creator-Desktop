@@ -1,5 +1,8 @@
+"use strict";
+exports.__esModule = true;
+exports.jsonTree = void 0;
 var _ = require('lodash');
-var treeInterface = require("./treeInterface");
+//const treeInterface = require("./treeInterface")
 var jsonTree = /** @class */ (function () {
     function jsonTree() {
     }
@@ -19,5 +22,6 @@ var jsonTree = /** @class */ (function () {
     };
     return jsonTree;
 }());
-module.exports = jsonTree;
+exports.jsonTree = jsonTree;
+//module.exports = jsonTree
 //# sourceMappingURL=jsonTree.js.map

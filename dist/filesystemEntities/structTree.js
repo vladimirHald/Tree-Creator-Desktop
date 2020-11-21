@@ -1,5 +1,7 @@
-var TreeInterface = require("./treeInterface");
-var ___ = require('lodash');
+"use strict";
+exports.__esModule = true;
+exports.structTree = void 0;
+var _ = require('lodash');
 var structTree = /** @class */ (function () {
     function structTree() {
     }
@@ -30,7 +32,7 @@ var structTree = /** @class */ (function () {
        * @return {int[]}
        */
     structTree.prototype._getLevelsWithoutSeparator = function (fsItem) {
-        var fsItemCopy = ___.cloneDeep(fsItem), // don't broke origin object
+        var fsItemCopy = _.cloneDeep(fsItem), // don't broke origin object
         levelsWithoutSeparator = [];
         while (fsItemCopy.hasParent()) {
             if (fsItemCopy.parent.hasParent() && fsItemCopy.parent.parent.isLastChild(fsItemCopy.parent)) {
@@ -45,5 +47,6 @@ var structTree = /** @class */ (function () {
     };
     return structTree;
 }());
-module.exports = structTree;
+exports.structTree = structTree;
+//module.exports = structTree;
 //# sourceMappingURL=structTree.js.map

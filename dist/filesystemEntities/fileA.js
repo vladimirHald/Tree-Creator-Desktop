@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var fsItem = require('./fsItem');
+var FsItem = require('./fsItem');
 var FileA = /** @class */ (function (_super) {
     __extends(FileA, _super);
     /**
@@ -23,6 +23,6 @@ var FileA = /** @class */ (function (_super) {
         return _super.call(this, path, level) || this;
     }
     return FileA;
-}(fsItem));
+}(FsItem));
 module.exports = FileA;
 //# sourceMappingURL=fileA.js.map

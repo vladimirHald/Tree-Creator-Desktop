@@ -1,6 +1,6 @@
-let fsItem = require('./fsItem')
+import {FsItem} from './fsItem'
 
-class FileA extends fsItem {
+export class File extends FsItem {
   /**
    * @param {string} path Full path to file.
    * @param level
@@ -10,4 +10,4 @@ class FileA extends fsItem {
   }
 }
 
-module.exports = FileA;
+//module.exports = FileA;

@@ -14,10 +14,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 exports.Directory = void 0;
-var FsItem = require('./fsItem.js');
+var fsItem_js_1 = require("./fsItem.js");
+var file_js_1 = require("./file.js");
 var fs = require('fs');
 var path = require('path');
-var File = require('./fileA.js');
 var _ = require('lodash');
 var Directory = /** @class */ (function (_super) {
     __extends(Directory, _super);
@@ -71,7 +71,7 @@ var Directory = /** @class */ (function (_super) {
                 fsItem = new Directory(dirItemPath, _this.level + 1);
             }
             else if (stat.isFile()) {
-                fsItem = new File(dirItemPath, _this.level + 1);
+                fsItem = new file_js_1.File(dirItemPath, _this.level + 1);
             }
             else {
                 // Symlinks, FIFO, sockets and other Filesystem items
@@ -101,7 +101,6 @@ var Directory = /** @class */ (function (_super) {
         });
     };
     return Directory;
-}(FsItem));
+}(fsItem_js_1.FsItem));
 exports.Directory = Directory;
-module.exports = Directory;
 //# sourceMappingURL=directory.js.map

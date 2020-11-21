@@ -1,8 +1,9 @@
 
 
-const _ = require('lodash');
-const treeInterface = require("./treeInterface")
-class jsonTree implements treeInterface {
+ const _ = require('lodash');
+
+//const treeInterface = require("./treeInterface")
+export class jsonTree implements treeInterface {
      withoutParentRelations(dir: any) {
         let thisCopy = _.cloneDeep(dir);
     
@@ -23,5 +24,5 @@ class jsonTree implements treeInterface {
         console.log(JSON.stringify(this.withoutParentRelations(dir)));
     }
 }
-module.exports = jsonTree
+//module.exports = jsonTree
   

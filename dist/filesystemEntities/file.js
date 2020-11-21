@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,18 +12,21 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var FsItem = require('./fsItem.js');
-var FileA = /** @class */ (function (_super) {
-    __extends(FileA, _super);
+exports.__esModule = true;
+exports.File = void 0;
+var fsItem_1 = require("./fsItem");
+var File = /** @class */ (function (_super) {
+    __extends(File, _super);
     /**
      * @param {string} path Full path to file.
      * @param level
      */
-    function FileA(path, level) {
+    function File(path, level) {
         if (level === void 0) { level = 0; }
         return _super.call(this, path, level) || this;
     }
-    return FileA;
-}(FsItem));
-module.exports = FileA;
+    return File;
+}(fsItem_1.FsItem));
+exports.File = File;
+//module.exports = FileA;
 //# sourceMappingURL=file.js.map

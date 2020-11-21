@@ -1,5 +1,8 @@
+"use strict";
+exports.__esModule = true;
+exports.FsItem = void 0;
 var path = require('path');
-var __ = require('lodash');
+var _ = require('lodash');
 var FsItem = /** @class */ (function () {
     function FsItem(path, level) {
         /** @type {string} */
@@ -41,7 +44,7 @@ var FsItem = /** @class */ (function () {
      * @return {boolean}
      */
     FsItem.prototype.is = function (fsItem) {
-        return fsItem && __.isObject(fsItem) && this.path === fsItem.path;
+        return fsItem && _.isObject(fsItem) && this.path === fsItem.path;
     };
     /**
      * Returns copy of FsItem without any parent relation.
@@ -62,5 +65,6 @@ var FsItem = /** @class */ (function () {
     };
     return FsItem;
 }());
-module.exports = FsItem;
+exports.FsItem = FsItem;
+//module.exports = FsItem;
 //# sourceMappingURL=fsItem.js.map
