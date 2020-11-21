@@ -1,6 +1,6 @@
 const electron = require('electron')
 
-class Utils {
+export class Utils {
   /**
    * Check if Electron is running as compiled (packaged) application.
    *
@@ -24,4 +24,3 @@ class Utils {
 
 }
 
-module.exports = Utils;

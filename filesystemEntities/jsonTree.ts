@@ -2,8 +2,7 @@
 
  const _ = require('lodash');
 
-//const treeInterface = require("./treeInterface")
-export class jsonTree implements treeInterface {
+ export class jsonTree implements treeInterface {
      withoutParentRelations(dir: any) {
         let thisCopy = _.cloneDeep(dir);
     

@@ -2,7 +2,6 @@
 exports.__esModule = true;
 exports.jsonTree = void 0;
 var _ = require('lodash');
-//const treeInterface = require("./treeInterface")
 var jsonTree = /** @class */ (function () {
     function jsonTree() {
     }

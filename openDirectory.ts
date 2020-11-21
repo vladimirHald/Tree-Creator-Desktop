@@ -1,8 +1,11 @@
 //import * as electron from "electron";
 
+
+
+//import {createTree} from './filesystemEntities/createTree'
 const dialog = require('electron').remote.dialog;
-const utils = require('./dist/utils');
-const CreateTree = require('./dist/filesystemEntities/createTree')
+const createTree = require('./dist/filesystemEntities/createTree').createTree
+
 
 function openCatalog() {
   var pathText = document.getElementById("pathText");
@@ -18,7 +21,9 @@ function openCatalog() {
     selectedOption = 'tree'
     else if(selectedOption == '1')
     selectedOption = 'json'
-    let dirContentAsString = new CreateTree().getDirContentAsString(result.filePaths[0], selectedOption);
+    else if(selectedOption == '2')
+    selectedOption = 'listTree'
+    let dirContentAsString = new createTree().getDirContentAsString(result.filePaths[0], selectedOption);
     createDirectoryTree(dirContentAsString);
   }).catch((err: any) => {
     console.log(err)

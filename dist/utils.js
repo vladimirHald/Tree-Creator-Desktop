@@ -1,3 +1,6 @@
+"use strict";
+exports.__esModule = true;
+exports.Utils = void 0;
 var electron = require('electron');
 var Utils = /** @class */ (function () {
     function Utils() {
@@ -15,5 +18,5 @@ var Utils = /** @class */ (function () {
     };
     return Utils;
 }());
-module.exports = Utils;
+exports.Utils = Utils;
 //# sourceMappingURL=utils.js.map

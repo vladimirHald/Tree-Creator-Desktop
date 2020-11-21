@@ -48,5 +48,4 @@ var structTree = /** @class */ (function () {
     return structTree;
 }());
 exports.structTree = structTree;
-//module.exports = structTree;
 //# sourceMappingURL=structTree.js.map

@@ -66,5 +66,4 @@ var FsItem = /** @class */ (function () {
     return FsItem;
 }());
 exports.FsItem = FsItem;
-//module.exports = FsItem;
 //# sourceMappingURL=fsItem.js.map

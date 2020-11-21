@@ -51,4 +51,3 @@ export class structTree implements treeInterface {
     return this.getDirContentAsString(undefined,undefined, dir)
   }
 }
-//module.exports = structTree;
