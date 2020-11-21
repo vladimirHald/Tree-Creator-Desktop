@@ -18,7 +18,7 @@ var jsonTree = /** @class */ (function () {
         return thisCopy;
     };
     jsonTree.prototype.execute = function (dir) {
-        console.log(JSON.stringify(this.withoutParentRelations(dir)));
+        return JSON.stringify(this.withoutParentRelations(dir), null, 4);
     };
     return jsonTree;
 }());

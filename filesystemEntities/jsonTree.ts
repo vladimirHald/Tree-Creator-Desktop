@@ -21,7 +21,7 @@ export class jsonTree implements treeInterface {
 
       
      execute(dir: any) {
-        console.log(JSON.stringify(this.withoutParentRelations(dir)));
+        return JSON.stringify(this.withoutParentRelations(dir), null, 4);
     }
 }
 //module.exports = jsonTree

@@ -24,11 +24,11 @@
                 
                 else if(type == 'json') {
                  this.setBuildMethod(new jsonTree())
-                 this.buildTree(dir)
+                 return this.buildTree(dir)
                   //console.log(
                   //  JSON.stringify(new JsonTree().withoutParentRelations(dir))
                   //);
-                  return "See console";
+                  
                 }
                 
             
