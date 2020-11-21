@@ -12,7 +12,7 @@ var listTree = /** @class */ (function () {
             var startSymbol = '-';
             var spaces = '';
             for (var i = 0; i < dir.level; i++) {
-                spaces += " ";
+                spaces += "  ";
             }
             _privateOptions.dirTree += "\n" + spaces + startSymbol + " " + fsItem.name;
             if (fsItem.isDirectory()) {

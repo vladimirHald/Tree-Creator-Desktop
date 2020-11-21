@@ -5,7 +5,7 @@ export class listTree implements treeInterface {
           let startSymbol =  '-';
           let spaces = '';
           for (let i = 0; i < dir.level; i++) {
-            spaces += ` `;
+            spaces += `  `;
           }
     
           _privateOptions.dirTree += `\n${spaces}${startSymbol} ${fsItem.name}`;
