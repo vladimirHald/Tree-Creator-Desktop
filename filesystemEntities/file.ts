@@ -9,5 +9,3 @@ export class File extends FsItem {
     super(path, level);
   }
 }
-
-//module.exports = FileA;

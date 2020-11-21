@@ -6,25 +6,25 @@
         
         
         class createTree {
-            strategy: treeInterface
-            setStrategy(strategy: treeInterface) {
-                this.strategy = strategy;
+            buildMethod: treeInterface
+            setBuildMethod(buildMethod: treeInterface) {
+                this.buildMethod = buildMethod;
             }
-            executeStrategy(dir: any) {
-                return this.strategy.execute(dir);
+            buildTree(dir: any) {
+                return this.buildMethod.execute(dir);
             }
         
              getDirContentAsString(dirPath: any, type: any) {
             
                 let dir = new Directory(dirPath);
                 if(type == 'tree') {
-                    this.setStrategy(new structTree())
-                    return this.executeStrategy(dir)
+                    this.setBuildMethod(new structTree())
+                    return this.buildTree(dir)
                 }
                 
                 else if(type == 'json') {
-                 this.setStrategy(new jsonTree())
-                 this.executeStrategy(dir)
+                 this.setBuildMethod(new jsonTree())
+                 this.buildTree(dir)
                   //console.log(
                   //  JSON.stringify(new JsonTree().withoutParentRelations(dir))
                   //);

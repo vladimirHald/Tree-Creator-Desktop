@@ -28,5 +28,4 @@ var File = /** @class */ (function (_super) {
     return File;
 }(fsItem_1.FsItem));
 exports.File = File;
-//module.exports = FileA;
 //# sourceMappingURL=file.js.map

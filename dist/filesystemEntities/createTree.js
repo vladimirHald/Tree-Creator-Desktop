@@ -6,21 +6,21 @@ var directory_1 = require("./directory");
 var createTree = /** @class */ (function () {
     function createTree() {
     }
-    createTree.prototype.setStrategy = function (strategy) {
-        this.strategy = strategy;
+    createTree.prototype.setBuildMethod = function (buildMethod) {
+        this.buildMethod = buildMethod;
     };
-    createTree.prototype.executeStrategy = function (dir) {
-        return this.strategy.execute(dir);
+    createTree.prototype.buildTree = function (dir) {
+        return this.buildMethod.execute(dir);
     };
     createTree.prototype.getDirContentAsString = function (dirPath, type) {
         var dir = new directory_1.Directory(dirPath);
         if (type == 'tree') {
-            this.setStrategy(new structTree_1.structTree());
-            return this.executeStrategy(dir);
+            this.setBuildMethod(new structTree_1.structTree());
+            return this.buildTree(dir);
         }
         else if (type == 'json') {
-            this.setStrategy(new jsonTree_1.jsonTree());
-            this.executeStrategy(dir);
+            this.setBuildMethod(new jsonTree_1.jsonTree());
+            this.buildTree(dir);
             //console.log(
             //  JSON.stringify(new JsonTree().withoutParentRelations(dir))
             //);
