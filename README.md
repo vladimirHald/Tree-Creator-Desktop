@@ -10,7 +10,7 @@ Create Project Structure with Tree Creator Desktop
 2. In the pre-project path, run
 ```
 # In case of console client:
-git clone https://github.com/PersikMirkotov/Tree-Creator-Desktop.git Tree-Creator-Desktop 
+git clone https://github.com/vladimirHald/Tree-Creator-Desktop.git Tree-Creator-Desktop 
 # Otherwise clone project via GUI client
 
 cd Tree-Creator-Desktop
